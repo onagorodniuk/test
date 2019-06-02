@@ -1,8 +1,8 @@
 ---
 - name: setup and configure latest nginx
-  hosts: '{{ target }}'
+  hosts: web
   #hosts: all
-  user: deployer
+  user: ubuntu
   become: yes
   become_method: sudo
   roles:

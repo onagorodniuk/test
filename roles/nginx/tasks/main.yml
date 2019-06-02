@@ -5,15 +5,15 @@
 - name: Remove default virual host
   file:
     state: absent
-    path: "/etc/nginx/site-enabled/default"
+    path: "/etc/nginx/sites-enabled/default"
     
 - name: Update nginx default virtual host 
-  template: src=test.j2 dest=/etc/nginx/site-available/test
+  template: src=test.j2 dest=/etc/nginx/sites-available/test
 
 - name: Enable nginx virtual host 
   file:
-    src: /etc/nginx/site-available/test
-    dest: /etc/nginx/site-enabled/000-test
+    src: /etc/nginx/sites-available/test
+    dest: /etc/nginx/sites-enabled/000-test
     state: link
   #notify: restart nginx
 

@@ -1,2 +1,4 @@
 [web]
-test_instance ansible_port=22 ansible_host=54.198.159.75
+54.198.159.75
+[web:vars]
+ansible_ssh_common_args='-o StrictHostKeyChecking=no'

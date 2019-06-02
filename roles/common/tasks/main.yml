@@ -1,4 +1,4 @@
-- name: Run the equivalent of "apt-get update" 
+- name: Update apt cache
   apt:
     update_cache: yes
     
