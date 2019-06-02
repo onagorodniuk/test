@@ -2,7 +2,7 @@
 - name: setup and configure latest nginx
   hosts: web
   #hosts: all
-  user: ubuntu
+  #user: ubuntu
   become: yes
   become_method: sudo
   roles:

@@ -1,4 +1,4 @@
 [web]
-54.198.159.75
+54.198.159.75 ansible_user=ubuntu
 [web:vars]
 ansible_ssh_common_args='-o StrictHostKeyChecking=no'
