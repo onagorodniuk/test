@@ -1,0 +1,37 @@
+---
+- name: Install latest nginx
+  apt: name=nginx state=latest
+
+- name: Remove default virual host
+  file:
+    state: absent
+    path: "/etc/nginx/site-enabled/default"
+    
+- name: Update nginx default virtual host 
+  template: src=test.j2 dest=/etc/nginx/site-available/test
+
+- name: Enable nginx virtual host 
+  file:
+    src: /etc/nginx/site-available/test
+    dest: /etc/nginx/site-enabled/000-test
+    state: link
+  #notify: restart nginx
+
+- name: Copy nginx default page 
+  template: src=index.html.j2 dest=/var/www/html/index.html
+
+- name: Check nginx config
+  shell: "/usr/sbin/nginx -t"
+  register: nginx_config_status  
+
+- name: nginx test status
+  debug:
+    msg: "{{ nginx_config_status.rc }}"
+
+- name: Service nginx restart
+  systemd:
+    name: nginx
+    state: restarted
+    enabled: yes
+    daemon_reload: yes
+  when: nginx_config_status.rc == 0

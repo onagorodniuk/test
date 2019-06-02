@@ -1,0 +1,2 @@
+[web]
+test_instance ansible_port=22 ansible_host=54.198.159.75

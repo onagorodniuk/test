@@ -1,0 +1,10 @@
+---
+- name: setup and configure latest nginx
+  hosts: '{{ target }}'
+  #hosts: all
+  user: deployer
+  become: yes
+  become_method: sudo
+  roles:
+    - common
+    - nginx
